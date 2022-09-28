@@ -19,6 +19,7 @@ int main(void)
     printf("[10] wificollector_display\n");
     printf("[11] wificollector_display_all\n\n");
     printf("Option: ");
+    printf("QUE LO QUEEE CABRONEE, SOY EL VELDADERO GITHUBIANO")
     
     scanf("%i", &menu_int);
    // printf("%i",menu_int);
