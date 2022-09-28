@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#include "../incl/quit.h"
+
 int main(void)
 {
     int menu_int;
@@ -20,25 +22,20 @@ int main(void)
     printf("[11] wificollector_display_all\n\n");
     printf("Option: ");
     printf("QUE LO QUEEE CABRONEE, SOY EL VELDADERO GITHUBIANO");
+    printf("MERA MAMAME EL BICHO");
     
-    scanf("%i", &menu_int);
-   // printf("%i",menu_int);
+    scanf("%d", &menu_int);
 
-  /* switch (menu_int)
-   {
-   case 1:
-    printf("Are you sure you want to exit? [y/N]:\n");
-    scanf("%c",&response)
-    if(response == ('y' || 'n'))
+    switch (menu_int)
     {
-
+    case 1:
+        response = getchar();
+        quit(response);
+        break;
+    
+    default:
+        break;
     }
-    break;
-   
-   default:
-    break;
-   }*/
-
     return 0;
 
 }
