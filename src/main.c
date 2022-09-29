@@ -1,9 +1,16 @@
 #include <stdio.h>
+#include <stdlib.h>
 
+
+#include "../incl/main.h"
 #include "../incl/quit.h"
+#include "../incl/collect.h"
+#include "../incl/display.h"
 
-int main(void)
+int main()
 {
+    system("clear");
+
     int menu_int;
     char response;
 
@@ -21,8 +28,6 @@ int main(void)
     printf("[10] wificollector_display\n");
     printf("[11] wificollector_display_all\n\n");
     printf("Option: ");
-    printf("QUE LO QUEEE CABRONEE, SOY EL VELDADERO GITHUBIANO");
-    printf("MERA MAMAME EL BICHO");
     
     scanf("%d", &menu_int);
 
@@ -32,6 +37,8 @@ int main(void)
         response = getchar();
         quit(response);
         break;
+   // case 2:
+
     
     default:
         break;
