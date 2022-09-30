@@ -15,7 +15,7 @@ void quit(char response)
     {
         case 'y':
         case 'Y':
-            printf("Goodbye!");
+            printf("Goodbye!\n");
             exit(0);
     
         case 'n':
