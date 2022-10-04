@@ -8,8 +8,9 @@
 
 void quit(char response)
 {
-    printf("Are you sure you want to exit? [y/N]:\n");
+    printf("Are you sure you want to exit? [y/N]:");
     scanf("%c",&response);
+    
    
     switch (response)
     {

@@ -7,14 +7,39 @@
 #include "../incl/collect.h"
 #include "../incl/display.h"
 
+int menu_int;
+
 int main()
 {
     system("clear");
 
-    int menu_int;
     char response;
 
 
+    do
+    {
+        print_menu();
+        scanf("%d", &menu_int);
+
+        switch (menu_int)
+        {
+        case 1:
+            response = getchar();
+            quit(response);
+            break;
+        // case 2:
+
+        default:
+            printf("At this moment this functionality is not available.\n\n");
+            break ;
+        }
+    } while (1);
+    return 0;
+
+}
+
+void print_menu(void)
+{
     printf("[2022] SUCEM S.L Wifi Collector\n\n");
     printf("[ 1] wificollector_quit\n");
     printf("[ 2] wificollector_collect\n");
@@ -26,23 +51,8 @@ int main()
     printf("[ 8] wificollector_export\n");
     printf("[ 9] wificollector_import\n");
     printf("[10] wificollector_display\n");
-    printf("[11] wificollector_display_all\n\n");
+    printf("[11] wificollector_display_all\n");
     printf("Option: ");
     
-    scanf("%d", &menu_int);
-
-    switch (menu_int)
-    {
-    case 1:
-        response = getchar();
-        quit(response);
-        break;
-   // case 2:
-
-    
-    default:
-        break;
-    }
-    return 0;
-
 }
+
