@@ -108,7 +108,7 @@ void put_conn_to_struct(int cell_num, char mac[MAX_STRING_SIZE], char essid[MAX_
         strcpy(conn_array[index].freq, freq);
         strcpy(conn_array[index].signal_l, signal_l);
 
-        printf("Network read from %s (added to position %i of the array)\n", name_file, index);
+        printf("Network read from %s (added to position %i of the array)\n", file_name, index);
         printf("\n%i %s %s %s %i %s %i %s %s\n", conn_array[index].cell_num, conn_array[index].mac, conn_array[index].essid, 
                 conn_array[index].mode, conn_array[index].channel, conn_array[index].en_key,
                 conn_array[index].quality, conn_array[index].freq, conn_array[index].signal_l);

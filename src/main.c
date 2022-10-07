@@ -21,7 +21,7 @@ int main()
             quit(response);
             break;
         case 2: 
-            cell_collect(name_file);
+            cell_collect(file_name);
             break;
         case 10:
             
