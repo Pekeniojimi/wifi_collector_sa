@@ -4,9 +4,10 @@
 
 #include "../incl/collect.h"
 
+int cell_num;
+
 int choose_cell()
 {
-    int cell_num;
 
     printf("What cell do you want to collect? (1 - 21):");
     scanf("%d", &cell_num);
@@ -67,7 +68,6 @@ void read_cell(char file_name[MAX_STRING_SIZE])
 
     FILE * cell_file = fopen(file_name, "r");
 
-    int cell_num;
     char mac[LINE_SIZE];
     char essid[LINE_SIZE];
     char mode[LINE_SIZE];
