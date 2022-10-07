@@ -25,7 +25,7 @@ void quit(char response)
             break;
     
     default:
-        printf("\n ERROR, input is not valid, try again!");
+        printf("\n ERROR, input is not valid, try it again!\n");
         system("clear");
         break;
     }

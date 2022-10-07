@@ -16,7 +16,7 @@ typedef struct connections
     int quality;
     char freq[MAX_STRING_SIZE];
     char signal_l[MAX_STRING_SIZE];
-};
+} connection_t;
 
 struct connections conn_array[ARRAY_SIZE];
 

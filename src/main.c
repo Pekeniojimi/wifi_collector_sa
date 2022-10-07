@@ -27,8 +27,11 @@ int main()
             response = getchar();
             quit(response);
             break;
-        // case 2:
-
+        case 2: 
+            cell_collect();
+            break;
+        case 10:
+            
         default:
             printf("At this moment this functionality is not available.\n\n");
             break ;

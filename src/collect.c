@@ -24,24 +24,47 @@ int choose_cell()
 
 void cell_collect()
 {
+    char y_n;
     int pick = choose_cell();
     char final_cell[MAX_STRING_SIZE];
 
+    //string to char
     sprintf(final_cell, "%i", pick );  
 
+    //Concatenating strings together to form the filename
     char name_file[] = {"./files/info_cell_"};
-    strcat(name_file,final_cell);
+    strcat(name_file, final_cell);
     strcat(name_file, ".txt");
 
+    read_cell(name_file);
 
+    printf("Do you want to add another access point? [y/N]: ");
+    scanf("%s", &y_n);
+
+    switch (y_n)
+    {
+    case 'y':
+    case 'Y':
+        cell_collect();
+
+    case 'n':
+    case 'N':
+        system("clear");
+        break;
     
+    default:
+        printf("\n ERROR, input is not valid, try it again!\n");
+        system("clear");
+        break;
+    }
+
 }
 
 void read_cell(char name_file){
 
     int index = 0;
 
-    FILE *entrada; //la entrada es cell_file
+    FILE * entrada; //la entrada es cell_file
 
     int cell_num;
     char mac[LINE_SIZE];
@@ -59,21 +82,16 @@ void read_cell(char name_file){
         printf("Error opening file: %s\n", name_file);
     }else{
         while(fscanf(entrada, "%i %s %s %s %i %s %i %s %s", cell_num, mac, essid, mode, channel,en_key, quality, freq, signal_l) != EOF){
-            {
-            printf("Network read from %s (added to position %i of the array)\n", name_file, index++ )
             //insertar datos en el struct para luego meter en el array
-            }
+            put_connection_to_struct(cell_num, mac, essid, mode, channel, en_key, quality, freq, signal_l);
         }
+        fclose(name_file);
     }
-	
-      
-    return 0;
-
 }
 
  //aqui hago codigo para lectura de líneas (creo que tiene que ir en el main)
     
-    void leerporlineas(void)
+ /*   void leerporlineas(void)
     {
 
     char texto[150];
@@ -99,9 +117,9 @@ void read_cell(char name_file){
     return 0;
     
     }
-
+*/
     // en vez de almacenar ints definimos con el struct una variable que se va a llamar conexiones (qu conexiones a su vez van a ser arrays)
     
 
-    typedef struct
+    
     
