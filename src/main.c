@@ -2,6 +2,10 @@
 #include <stdlib.h>
 
 #include "../incl/main.h"
+#include "../incl/quit.h"
+#include "../incl/collect.h"
+#include "../incl/display_all.h"
+#include "../incl/display.h"
 
 int main()
 {

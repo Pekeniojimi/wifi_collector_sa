@@ -1,11 +1,6 @@
 #ifndef MAIN_H  
 #define MAIN_H
 
-#include "../incl/quit.h"
-#include "../incl/collect.h"
-#include "../incl/display_all.h"
-#include "../incl/display.h"
-
 #define MAX_STRING_SIZE 80
 #define ARRAY_SIZE 200
 #define LINE_SIZE 80

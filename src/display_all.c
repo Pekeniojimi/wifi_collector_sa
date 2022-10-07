@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "../incl/display_all.h"
+#include "../incl/main.h"
 
 int count_v;
 

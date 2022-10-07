@@ -1,8 +1,6 @@
 #ifndef COLLECT_H
 #define COLLECT_H
 
-#include "../incl/main.h"
-
 char file_name[20] = {"../files/info_cell_"};
 
 void cell_collect(char file_name[]);

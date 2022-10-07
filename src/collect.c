@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "../incl/collect.h"
+#include "../incl/main.h"
 
 int cell_num;
 
