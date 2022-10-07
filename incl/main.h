@@ -3,6 +3,7 @@
 
 #include "../incl/quit.h"
 #include "../incl/collect.h"
+#include "../incl/display_all.h"
 #include "../incl/display.h"
 
 #define MAX_STRING_SIZE 80

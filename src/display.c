@@ -71,32 +71,3 @@ void print_cell()
 
 
 }
-
-void put_conn_to_struct(int cell_num, char mac[MAX_STRING_SIZE], char essid[MAX_STRING_SIZE],
-                        char mode[MAX_STRING_SIZE], int channel, char en_key[MAX_STRING_SIZE],
-                        char quality, char freq[MAX_STRING_SIZE], char signal_l[MAX_STRING_SIZE])
-{
-    int index = 0;
-
-    if(index < ARRAY_SIZE)
-    {
-        conn_array[index].cell_num = cell_num;
-        strcpy(conn_array[index].mac, mac);
-        strcpy(conn_array[index].essid, essid);
-        strcpy(conn_array[index].mode, mode);
-        conn_array[index].channel = channel;
-        strcpy(conn_array[index].en_key, en_key);
-        conn_array[index].quality = quality;
-        strcpy(conn_array[index].freq, freq);
-        strcpy(conn_array[index].signal_l, signal_l);
-
-        printf("Network read from %s (added to position %i of the array)\n", name_file, index);
-        printf("\n%i %s %s %s %i %s %i %s %s\n", conn_array[index].cell_num, conn_array[index].mac, conn_array[index].essid, 
-                conn_array[index].mode, conn_array[index].channel, conn_array[index].en_key,
-                conn_array[index].quality, conn_array[index].freq, conn_array[index].signal_l);
-
-        index++;
-    } else {
-        printf("Error: the array is full and it can not store further conn_array, to reset the storage please restart the program");
-    }
-}
