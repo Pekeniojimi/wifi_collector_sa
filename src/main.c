@@ -1,20 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 #include "../incl/main.h"
-#include "../incl/quit.h"
-#include "../incl/collect.h"
-#include "../incl/display.h"
-
-int menu_int;
 
 int main()
 {
     system("clear");
 
     char response;
-
 
     do
     {
@@ -28,7 +21,7 @@ int main()
             quit(response);
             break;
         case 2: 
-            cell_collect();
+            cell_collect(name_file);
             break;
         case 10:
             
@@ -41,7 +34,7 @@ int main()
 
 }
 
-void print_menu(void)
+void print_menu()
 {
     printf("[2022] SUCEM S.L Wifi Collector\n\n");
     printf("[ 1] wificollector_quit\n");
@@ -56,6 +49,4 @@ void print_menu(void)
     printf("[10] wificollector_display\n");
     printf("[11] wificollector_display_all\n");
     printf("Option: ");
-    
 }
-
