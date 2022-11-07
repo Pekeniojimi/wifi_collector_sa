@@ -4,19 +4,30 @@
 
 #include "../incl/display_all.h"
 #include "../incl/main.h"
+#include "../incl/collect.h"
 
-int count_v;
-
+// The following function prints the information contained by all cells
 void print_all()
 {
-    for (int i = 0; i < count_v; i++)
+    for (int i = 0; i < network_counter; i++)
     {
-        printf("\n%i %s %s %s %i %s %i %s %s\n",
-                conn_array[i].cell_num, conn_array[i].mac,
-                conn_array[i].essid, conn_array[i].mode,
-                conn_array[i].channel, conn_array[i].en_key,
-                conn_array[i].quality, conn_array[i].freq,
-                conn_array[i].signal_l);
+        if(strlen((p_connections)[i].cell_num) != 0)
+        {
 
+            printf("\n%s %s %s %s %s %s %s %s %s\n",
+                (p_connections)[i].cell_num, (p_connections)[i].mac,
+                (p_connections)[i].essid, (p_connections)[i].mode,
+                (p_connections)[i].channel, (p_connections)[i].en_key,
+                (p_connections)[i].quality, (p_connections)[i].freq,
+                (p_connections)[i].signal_l);
+
+        }
     }
+
+    printf("\nPress any key to go to the menu: ");
+    scanf("%s", &any_key);
+    if(sizeof(any_key) == (sizeof(char) || sizeof(int)))
+    {
+        system("clear");
+    }    
 }

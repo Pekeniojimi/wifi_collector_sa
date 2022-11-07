@@ -4,6 +4,8 @@
 
 #include "../incl/quit.h"
 
+// this function offers you to quit the program or continue
+
 void quit(char response)
 {
     printf("Are you sure you want to exit? [y/N]:");
