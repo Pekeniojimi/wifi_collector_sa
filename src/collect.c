@@ -5,7 +5,7 @@
 #include "../incl/collect.h"
 #include "../incl/main.h"
 
-//printf("%s", buffer);
+//printf("%s", aux);
 
 //extern char file_name[];
 
@@ -53,6 +53,8 @@ void cell_collect()
 // The following function reads the information in the file and returns the data in a struct
 void read_cell(char file_name[MAX_STRING_SIZE])
 {
+    Node *head_ref;
+    connection aux;
 
     //int index = 0;
     char buffer[LINE_SIZE];
@@ -68,12 +70,15 @@ void read_cell(char file_name[MAX_STRING_SIZE])
         while(fgets(buffer, LINE_SIZE, cell_file))
         {
                
-            if(network_counter % INITIAL_SIZE == 0 && network_counter != 0)
+            /*if(network_counter % INITIAL_SIZE == 0 && network_counter != 0)
             {
-            p_connections = (connection*) realloc(p_connections, (network_counter + INITIAL_SIZE) * sizeof(connection));
-            }
+                p_connections = (connection*) realloc(p_connections, (network_counter + INITIAL_SIZE) * sizeof(connection));
+            }*/
 
             insert_new_connection(buffer);
+
+            create_Node(aux);
+            
             if(line_counter == 8)
             {
                 line_counter = 0;
@@ -90,54 +95,54 @@ void read_cell(char file_name[MAX_STRING_SIZE])
 }
 
 // The following method inserts a new connection 
-void insert_new_connection (char buffer[]){
+void insert_new_connection (connection aux[]){
     
     switch(line_counter) {
 
             case 0  :
-                strcpy((p_connections)[network_counter].cell_num, buffer);
+                strcpy((p_connections)[network_counter].cell_num, aux);
                 printf("%s", (p_connections)[network_counter].cell_num);
-            break; /* optional */
+            break; 
 	
             case 1  :
-                strcpy((p_connections)[network_counter].mac, buffer);
+                strcpy((p_connections)[network_counter].mac, aux);
                 printf("%s", (p_connections)[network_counter].mac);
-            break; /* optional */
+            break; 
 
             case 2  :
-                strcpy((p_connections)[network_counter].essid, buffer);
+                strcpy((p_connections)[network_counter].essid, aux);
                 printf("%s", (p_connections)[network_counter].essid);
-            break; /* optional */
+            break; 
 
             case 3  :
-                strcpy((p_connections)[network_counter].mode, buffer);
+                strcpy((p_connections)[network_counter].mode, aux);
                 printf("%s", (p_connections)[network_counter].mode);
-            break; /* optional */
+            break; 
 
             case 4  :
-                strcpy((p_connections)[network_counter].channel, buffer);
+                strcpy((p_connections)[network_counter].channel, aux);
                 printf("%s", (p_connections)[network_counter].channel);
-            break; /* optional */
+            break; 
 
             case 5  :
-                strcpy((p_connections)[network_counter].en_key, buffer);
+                strcpy((p_connections)[network_counter].en_key, aux);
                 printf("%s", (p_connections)[network_counter].en_key);
-            break; /* optional */
+            break; 
 
             case 6  :
-                strcpy((p_connections)[network_counter].quality, buffer);
+                strcpy((p_connections)[network_counter].quality, aux);
                 printf("%s", (p_connections)[network_counter].quality);
-            break; /* optional */
+            break; 
 
             case 7  :
-                strcpy((p_connections)[network_counter].freq, buffer);
+                strcpy((p_connections)[network_counter].freq, aux);
                 printf("%s", (p_connections)[network_counter].freq);
-            break; /* optional */
+            break; 
 
             case 8  :
-                strcpy((p_connections)[network_counter].signal_l, buffer);
+                strcpy((p_connections)[network_counter].signal_l, aux);
                 printf("%s", (p_connections)[network_counter].signal_l);
-            break; /* optional */
+            break; 
 
        }
 }

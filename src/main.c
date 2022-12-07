@@ -98,3 +98,61 @@ int choose_cell()
     }
     return 0; //error
 }
+
+Node *create_Node(connection data){
+    Node *node = (Node*) malloc(sizeof(Node));
+    node->data = data;
+    node->next = NULL;
+
+    return node;
+}
+
+void append(Node **head_ref, Node *new_Node){   
+    Node *last = *head_ref;
+
+    if(*head_ref == NULL){
+        *head_ref = new_Node;
+        return;
+    }
+
+    while(last->next != NULL){
+        last = last->next;
+    }
+
+    last->next = new_Node;
+}
+
+void delete_Node(Node **head_ref, char ESSID[]){
+    Node *tmp = *head_ref, *prev;
+
+    if(tmp != NULL && tmp->data != ESSID){
+        *head_ref = tmp->next;
+        free(tmp);
+        return;
+    }
+
+    while(tmp != NULL && tmp->data != ESSID){
+        prev = tmp;
+        tmp = tmp->next;
+    }
+
+    if(tmp == NULL){
+        return;
+    }
+
+    prev->next = tmp->next;
+    free(tmp);
+}
+
+void clear_list(Node **head_ref){
+    Node *current = *head_ref;
+    Node *next;
+
+    while(current != NULL){
+        next = current->next;
+        free(current);
+        current = next;
+    }
+
+    *head_ref = NULL;
+}
