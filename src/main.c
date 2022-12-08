@@ -122,28 +122,6 @@ void append(Node **head_ref, Node *new_Node){
     last->next = new_Node;
 }
 
-void delete_Node(Node **head_ref, char ESSID[]){
-    Node *tmp = *head_ref, *prev;
-
-    if(tmp != NULL && tmp->data != ESSID){
-        *head_ref = tmp->next;
-        free(tmp);
-        return;
-    }
-
-    while(tmp != NULL && tmp->data != ESSID){
-        prev = tmp;
-        tmp = tmp->next;
-    }
-
-    if(tmp == NULL){
-        return;
-    }
-
-    prev->next = tmp->next;
-    free(tmp);
-}
-
 void clear_list(Node **head_ref){
     Node *current = *head_ref;
     Node *next;

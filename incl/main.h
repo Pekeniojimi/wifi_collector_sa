@@ -22,7 +22,7 @@ typedef struct connection_S
 } connection;
 
 //this is our Node struct
-typedef struct Node {
+typedef struct Node{
     connection data;
     struct Node *next;
 } Node;
@@ -30,8 +30,6 @@ typedef struct Node {
 Node *create_Node(connection data);
 
 void append(Node **head_ref, Node *new_Node);
-
-void delete_Node(Node **head_ref, char ESSID[]);
 
 void clear_list(Node **head_ref);
 

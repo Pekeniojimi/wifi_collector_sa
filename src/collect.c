@@ -54,10 +54,10 @@ void cell_collect()
 void read_cell(char file_name[MAX_STRING_SIZE])
 {
     Node *head_ref;
-    connection aux;
+    connection *aux;
 
-    //int index = 0;
     char buffer[LINE_SIZE];
+
     FILE * cell_file = fopen(file_name, "r");
 
     if(!cell_file)
@@ -72,12 +72,14 @@ void read_cell(char file_name[MAX_STRING_SIZE])
                
             /*if(network_counter % INITIAL_SIZE == 0 && network_counter != 0)
             {
-                p_connections = (connection*) realloc(p_connections, (network_counter + INITIAL_SIZE) * sizeof(connection));
+                aux = (connection*) realloc(aux, (network_counter + INITIAL_SIZE) * sizeof(connection));
             }*/
 
             insert_new_connection(buffer);
 
-            create_Node(aux);
+            Node *new_Node = create_Node(*aux);
+
+            append(&head_ref, new_Node);
             
             if(line_counter == 8)
             {
@@ -95,53 +97,55 @@ void read_cell(char file_name[MAX_STRING_SIZE])
 }
 
 // The following method inserts a new connection 
-void insert_new_connection (connection aux[]){
+void insert_new_connection (char buffer[]){
     
+    connection *aux;
+
     switch(line_counter) {
 
             case 0  :
-                strcpy((p_connections)[network_counter].cell_num, aux);
-                printf("%s", (p_connections)[network_counter].cell_num);
+                strcpy((aux)[network_counter].cell_num, buffer);
+                printf("%s", (aux)[network_counter].cell_num);
             break; 
 	
             case 1  :
-                strcpy((p_connections)[network_counter].mac, aux);
-                printf("%s", (p_connections)[network_counter].mac);
+                strcpy((aux)[network_counter].mac, buffer);
+                printf("%s", (aux)[network_counter].mac);
             break; 
 
             case 2  :
-                strcpy((p_connections)[network_counter].essid, aux);
-                printf("%s", (p_connections)[network_counter].essid);
+                strcpy((aux)[network_counter].essid, buffer);
+                printf("%s", (aux)[network_counter].essid);
             break; 
 
             case 3  :
-                strcpy((p_connections)[network_counter].mode, aux);
-                printf("%s", (p_connections)[network_counter].mode);
+                strcpy((aux)[network_counter].mode, buffer);
+                printf("%s", (aux)[network_counter].mode);
             break; 
 
             case 4  :
-                strcpy((p_connections)[network_counter].channel, aux);
-                printf("%s", (p_connections)[network_counter].channel);
+                strcpy((aux)[network_counter].channel, buffer);
+                printf("%s", (aux)[network_counter].channel);
             break; 
 
             case 5  :
-                strcpy((p_connections)[network_counter].en_key, aux);
-                printf("%s", (p_connections)[network_counter].en_key);
+                strcpy((aux)[network_counter].en_key, buffer);
+                printf("%s", (aux)[network_counter].en_key);
             break; 
 
             case 6  :
-                strcpy((p_connections)[network_counter].quality, aux);
-                printf("%s", (p_connections)[network_counter].quality);
+                strcpy((aux)[network_counter].quality, buffer);
+                printf("%s", (aux)[network_counter].quality);
             break; 
 
             case 7  :
-                strcpy((p_connections)[network_counter].freq, aux);
-                printf("%s", (p_connections)[network_counter].freq);
+                strcpy((aux)[network_counter].freq, buffer);
+                printf("%s", (aux)[network_counter].freq);
             break; 
 
             case 8  :
-                strcpy((p_connections)[network_counter].signal_l, aux);
-                printf("%s", (p_connections)[network_counter].signal_l);
+                strcpy((aux)[network_counter].signal_l, buffer);
+                printf("%s", (aux)[network_counter].signal_l);
             break; 
 
        }
