@@ -5,14 +5,15 @@
 #include "../incl/collect.h"
 #include "../incl/main.h"
 
-//printf("%s", aux);
+//printf("%s", first_Node);
 
 //extern char file_name[];
 
-//The following function collects the cell
+//The following function collects the cell: rellena los nodos y añade nuevos nodos
 
-void cell_collect()
+void cell_collect(Node *first_Node)
 {
+    // first_Node es el primer nodo vacío que vamos a rellenar en cell_collect()
     char y_n;
     int pick = choose_cell();
     char final_cell[MAX_STRING_SIZE];
@@ -37,7 +38,8 @@ void cell_collect()
     {
     case 'y':
     case 'Y':
-        cell_collect();
+        append_Node(first_Node);
+        cell_collect(first_Node);
     case 'n':
     case 'N':
         system("clear");
@@ -53,8 +55,10 @@ void cell_collect()
 // The following function reads the information in the file and returns the data in a struct
 void read_cell(char file_name[MAX_STRING_SIZE])
 {
-    Node *head_ref;
-    connection *aux;
+    //Node *head_ref;
+    // int line_counter = 0;
+    // int network_counter = 0;
+    short end_of_data =0;
 
     char buffer[LINE_SIZE];
 
@@ -67,85 +71,99 @@ void read_cell(char file_name[MAX_STRING_SIZE])
     else
     {
 
-        while(fgets(buffer, LINE_SIZE, cell_file))
+        while(end_of_data == 0)
         {
-               
-            /*if(network_counter % INITIAL_SIZE == 0 && network_counter != 0)
-            {
-                aux = (connection*) realloc(aux, (network_counter + INITIAL_SIZE) * sizeof(connection));
-            }*/
-
-            insert_new_connection(buffer);
-
-            Node *new_Node = create_Node(*aux);
-
-            append(&head_ref, new_Node);
+            if (fgets(buffer, LINE_SIZE, cell_file))
+            {          
+                fill_Node(buffer);
             
-            if(line_counter == 8)
-            {
-                line_counter = 0;
-                network_counter++;
-                printf("\n");
+                if(line_counter == DATA_SIZE)
+                {
+                    line_counter = 0;
+                    network_counter++;
+                    printf("\n");
+                    // Node *aux = first_Node;
+                    append_Node(first_Node);
+                }
+                else
+                {
+                    line_counter++;
+                }
             }
             else
             {
-                line_counter++;
+                end_of_data = 1;
             }
+            
         }
     }
     fclose(cell_file);
 }
 
-// The following method inserts a new connection 
-void insert_new_connection (char buffer[]){
+void append_Node(Node *last_Node){   
     
-    connection *aux;
+    /*
+    if(*last_Node == NULL){
+        return;
+    }
+    */
+
+   Node *first_Node = (Node*) calloc(INITIAL_SIZE, sizeof(Node));
+   last_Node->next = first_Node;
+   last_Node = first_Node;
+
+   return;
+    
+}
+
+// The following method inserts a new connection 
+void fill_Node (char buffer[]){
 
     switch(line_counter) {
 
             case 0  :
-                strcpy((aux)[network_counter].cell_num, buffer);
-                printf("%s", (aux)[network_counter].cell_num);
+                strcpy(first_Node->cell_num, buffer);
+                printf("%s", first_Node->cell_num);
             break; 
 	
             case 1  :
-                strcpy((aux)[network_counter].mac, buffer);
-                printf("%s", (aux)[network_counter].mac);
+                strcpy(first_Node->mac, buffer);
+                printf("%s", first_Node->mac);
             break; 
 
             case 2  :
-                strcpy((aux)[network_counter].essid, buffer);
-                printf("%s", (aux)[network_counter].essid);
+                strcpy(first_Node->essid, buffer);
+                printf("%s", first_Node->essid);
             break; 
 
             case 3  :
-                strcpy((aux)[network_counter].mode, buffer);
-                printf("%s", (aux)[network_counter].mode);
+                strcpy(first_Node->mode, buffer);
+                printf("%s", first_Node->mode);
             break; 
 
             case 4  :
-                strcpy((aux)[network_counter].channel, buffer);
-                printf("%s", (aux)[network_counter].channel);
+                strcpy(first_Node->channel, buffer);
+                printf("%s", first_Node->channel);
             break; 
 
             case 5  :
-                strcpy((aux)[network_counter].en_key, buffer);
-                printf("%s", (aux)[network_counter].en_key);
+                strcpy(first_Node->en_key, buffer);
+                printf("%s", first_Node->en_key);
             break; 
 
             case 6  :
-                strcpy((aux)[network_counter].quality, buffer);
-                printf("%s", (aux)[network_counter].quality);
+                strcpy(first_Node->quality, buffer);
+                printf("%s", first_Node->quality);
             break; 
 
             case 7  :
-                strcpy((aux)[network_counter].freq, buffer);
-                printf("%s", (aux)[network_counter].freq);
+                strcpy(first_Node->freq, buffer);
+                printf("%s", first_Node->freq);
             break; 
 
             case 8  :
-                strcpy((aux)[network_counter].signal_l, buffer);
-                printf("%s", (aux)[network_counter].signal_l);
+                strcpy(first_Node->signal_l, buffer);
+                printf("%s", first_Node->signal_l);
             break; 
 
        }

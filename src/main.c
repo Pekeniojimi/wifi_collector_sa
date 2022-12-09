@@ -19,7 +19,7 @@ int main()
 
     char response;
 
-    p_connections = (connection*) calloc(INITIAL_SIZE, sizeof(connection));
+    Node *header_Node = (Node*) calloc(INITIAL_SIZE, sizeof(Node));
 
     do
     {
@@ -33,7 +33,7 @@ int main()
             quit(response);
             break;
         case 2: 
-            cell_collect();
+            cell_collect(header_Node);
             break;
         case 4:
             select_b();
@@ -99,15 +99,19 @@ int choose_cell()
     return 0; //error
 }
 
-Node *create_Node(connection data){
+/*
+Node *create_Node(Node data){
     Node *node = (Node*) malloc(sizeof(Node));
     node->data = data;
     node->next = NULL;
 
     return node;
 }
+*/
 
-void append(Node **head_ref, Node *new_Node){   
+
+/*
+void append_Node(Node **head_ref, Node *new_Node){   
     Node *last = *head_ref;
 
     if(*head_ref == NULL){
@@ -121,7 +125,9 @@ void append(Node **head_ref, Node *new_Node){
 
     last->next = new_Node;
 }
+*/
 
+/*
 void clear_list(Node **head_ref){
     Node *current = *head_ref;
     Node *next;
@@ -134,3 +140,4 @@ void clear_list(Node **head_ref){
 
     *head_ref = NULL;
 }
+*/

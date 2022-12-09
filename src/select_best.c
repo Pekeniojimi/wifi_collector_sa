@@ -13,7 +13,8 @@ the access point to any network that offers the highest quality
 */ 
 void select_b()
 {
-    int z = best(p_connections);
+    
+    int z = best();
     printf("The best connection data is: \n");
     printf("\n%s %s %s %s %s %s %s %s %s\n",
                 (p_connections)[z].cell_num, (p_connections)[z].mac,
@@ -31,8 +32,9 @@ void select_b()
 }
 
 
-int best(connection *ptr)
+int best()
 {
+    Node *aux = header_Node;
     int x=0;
     int biggest;
     int smaller;
@@ -43,14 +45,14 @@ int best(connection *ptr)
     p_biggest = (char*) calloc(1, 10*sizeof(char));
     p_smaller = (char*) calloc(1, 10*sizeof(char));
 
-    strcat(p_biggest, (ptr)[x].quality + 8);
+    strcat(p_biggest, (aux->quality + 8));
     //printf("%s\n",p_biggest);
     biggest = atoi(p_biggest); 
     //printf("%i\n",biggest);  
 
-    for(int i=1; i<network_counter; i++)
+    do
     { 
-        strcpy(p_smaller, (ptr)[i].quality + 8);
+        strcpy(p_smaller, (aux->quality + 8));
         //printf("%i : ", i);
         //printf(" %s smaller - ", p_smaller);
         smaller = atoi(p_smaller);   
@@ -60,8 +62,9 @@ int best(connection *ptr)
                 x=i;
                 biggest = smaller;
             }
+        aux = aux->next;
     }
+    while (aux->next != NULL)
     
-
-   return x;
+    return x;
 }
