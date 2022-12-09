@@ -113,7 +113,7 @@ void append_Node(Node *last_Node){
    last_Node = first_Node;
 
    return;
-    
+
 }
 
 // The following method inserts a new connection 
