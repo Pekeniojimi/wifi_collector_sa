@@ -12,13 +12,13 @@ the access point to any network that offers the lowest quality
 */ 
 void select_w()
 {
-    Node *aux = header_Node;
+    //Node *aux = header_Node;
 
     int z = worst();
     aux = header_Node;
     while ( *aux->quality != z)
     {
-        aux = (Node*) aux->next;
+        aux = aux->next;
     }
     printf("the worst connection data is: \n");
     printf("\n%s %s %s %s %s %s %s %s %s\n",
@@ -39,7 +39,7 @@ void select_w()
 
 int worst()
 {
-    Node *aux = header_Node;
+    aux = header_Node;
     int x=0;
     int smallest;
     int bigger;

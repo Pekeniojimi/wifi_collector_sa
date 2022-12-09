@@ -5,14 +5,21 @@
 #include "../incl/collect.h"
 #include "../incl/main.h"
 
+Node *first_Node;
+
 //printf("%s", first_Node);
-
 //extern char file_name[];
-
 //The following function collects the cell: rellena los nodos y añade nuevos nodos
+//void cell_collect(Node *first_Node)
 
-void cell_collect(Node *first_Node)
-{
+void cell_collect()
+{ 
+    first_Node = header_Node;
+    while (first_Node->next != NULL)
+    {
+        first_Node = first_Node->next;
+    }
+
     // first_Node es el primer nodo vacío que vamos a rellenar en cell_collect()
     char y_n;
     int pick = choose_cell();
@@ -20,7 +27,7 @@ void cell_collect(Node *first_Node)
 
     //int to string
     sprintf(final_cell, "%i", pick);  
-    char file_name[20] = {"../files/info_cell_"};
+    char file_name[MAX_STRING_SIZE] = {"../files/info_cell_"};
     
 
     //Concatenating strings together to form the filename
@@ -38,8 +45,8 @@ void cell_collect(Node *first_Node)
     {
     case 'y':
     case 'Y':
-        append_Node(first_Node);
-        cell_collect(first_Node);
+        append_Node();
+        cell_collect();
     case 'n':
     case 'N':
         system("clear");
@@ -56,8 +63,8 @@ void cell_collect(Node *first_Node)
 void read_cell(char file_name[MAX_STRING_SIZE])
 {
     //Node *head_ref;
-    // int line_counter = 0;
-    // int network_counter = 0;
+    line_counter = 0;
+    network_counter = 0;
     short end_of_data =0;
 
     char buffer[LINE_SIZE];
@@ -72,35 +79,36 @@ void read_cell(char file_name[MAX_STRING_SIZE])
     {
 
         while(end_of_data == 0)
-        {
-            if (fgets(buffer, LINE_SIZE, cell_file))
-            {          
-                fill_Node(buffer);
+        {                 
             
+            if (fgets(buffer, LINE_SIZE, cell_file))
+            {
+                if (network_counter > 0 && line_counter == 0)
+                {
+                    append_Node();
+                }
+
+                fill_Node(buffer);
+                line_counter++;
+                
                 if(line_counter == DATA_SIZE)
                 {
                     line_counter = 0;
                     network_counter++;
                     printf("\n");
-                    // Node *aux = first_Node;
-                    append_Node(first_Node);
-                }
-                else
-                {
-                    line_counter++;
                 }
             }
             else
             {
                 end_of_data = 1;
             }
-            
         }
+        fclose(cell_file);
     }
-    fclose(cell_file);
 }
 
-void append_Node(Node *last_Node){   
+
+void append_Node(){   
     
     /*
     if(*last_Node == NULL){
@@ -108,9 +116,9 @@ void append_Node(Node *last_Node){
     }
     */
 
-   Node *first_Node = (Node*) calloc(INITIAL_SIZE, sizeof(Node));
-   last_Node->next = (struct Node*) first_Node;
-   last_Node = first_Node;
+   Node *aux = (Node*) calloc(INITIAL_SIZE, sizeof(Node));
+   first_Node->next = aux;
+   first_Node = aux;
 
    return;
     

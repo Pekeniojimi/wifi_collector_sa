@@ -11,7 +11,7 @@
 
 
 int cell_num;
-
+Node *header_Node;
 
 int main()
 {
@@ -19,7 +19,7 @@ int main()
 
     char response;
 
-    Node *header_Node = (Node*) calloc(INITIAL_SIZE, sizeof(Node));
+    header_Node = (Node*) calloc(INITIAL_SIZE, sizeof(Node));
 
     do
     {
@@ -33,7 +33,8 @@ int main()
             quit(response);
             break;
         case 2: 
-            cell_collect(header_Node);
+            //cell_collect(header_Node);
+            cell_collect();
             break;
         case 4:
             select_b();
@@ -45,13 +46,14 @@ int main()
             print_cell();
             break;
         case 11:
-            print_all(header_Node);
+            print_all();
             break;    
         default:
             printf("\nAt this moment this functionality is not available.\n\n");
             break ;
         }
     } while (1);
+    clear_list(header_Node);
     return 0;
 
 }
@@ -127,17 +129,16 @@ void append_Node(Node **head_ref, Node *new_Node){
 }
 */
 
-/*
-void clear_list(Node **head_ref){
-    Node *current = *head_ref;
-    Node *next;
+void clear_list(Node *head_ref){
+    Node *current = head_ref;
+    Node *aux;
 
     while(current != NULL){
-        next = current->next;
+        aux = current->next;
         free(current);
-        current = next;
+        current = aux;
     }
 
-    *head_ref = NULL;
+    head_ref = NULL;
 }
-*/
+

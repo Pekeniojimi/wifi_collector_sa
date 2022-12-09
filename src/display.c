@@ -40,12 +40,15 @@
 
     void printer()
     {
-        Node *aux = header_Node;
+        Node *aux_first, *aux_last;
+        aux_first = header_Node;
+        int counter;
+
         char input_of_String[MAX_STRING_SIZE];
-        int count_v = 0;
+        //int count_v = 0;
         
         char cell_name[20] = {"Cell "};
-        int value;
+        //int value;
 
         int picker = choose_cell();
    
@@ -53,15 +56,44 @@
         sprintf(input_of_String, "%i", picker); 
         strcat(cell_name, input_of_String);
         
-        while(aux->cell_num != cell_name) {
-            aux = (Node*) aux->next;
+        while(aux_first->cell_num != cell_name ) 
+        {
+            aux_first = aux_first->next;
+            if (aux_first == NULL)
+            {break;}
         }
-         printf("\n%s %s %s %s %s %s %s %s %s\n",
-               aux->cell_num,aux->mac,
-               aux->essid,aux->mode,
-               aux->channel,aux->en_key,
-               aux->quality,aux->freq,
-               aux->signal_l);
+
+        if  (aux_first == NULL)
+        {
+            printf("\nScan the cell first, you can do this by pressing number 2 in th main menu\n");
+            return;
+        }
+
+        counter = 1;
+        aux_last = aux_first;
+
+        while(aux_last->next->cell_num == cell_name) 
+        {
+            aux_last = aux_last->next;
+            counter++;
+        }
+
+        aux_last = aux_first;
+        while (counter-- > 0)
+        {
+            
+            printf("\n%s %s %s %s %s %s %s %s %s\n",
+               aux_last->cell_num,
+               aux_last->mac,
+               aux_last->essid,
+               aux_last->mode,
+               aux_last->channel,
+               aux_last->en_key,
+               aux_last->quality,
+               aux_last->freq,
+               aux_last->signal_l);
+            aux_last = aux_last->next;
+        }
 
         /*for(int i = 0; i < network_counter; i++)
         {        
@@ -77,10 +109,6 @@
             {
                 count_v++;
                 if(count_v == 80)
-                {
-                    printf("\nScan the cell first, you can do this by pressing number 2 in th main menu\n");
-                    break;
-                }
             }
         }
         */

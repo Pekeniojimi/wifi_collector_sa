@@ -12,7 +12,7 @@ Node *first_Node;
 void cell_collect();
 int get_input_num();
 void read_cell(char file_name[]);
-void append_Node(Node *last_Node);
+void append_Node();
 void fill_Node(char buffer[]);
 /*void insert_new_connection(int cell_num, char mac[], char essid[],
                               char mode[], int channel, char en_key[],
