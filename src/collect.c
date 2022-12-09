@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "../incl/display_all.h"
 #include "../incl/collect.h"
 #include "../incl/main.h"
 
@@ -54,7 +55,12 @@ void cell_collect()
     
     default:
         printf("\n ERROR, input is not valid, try it again!\n");
-        system("clear");
+       printf("\nPress any key to go to the menu: ");
+             scanf("%s", &any_key);
+            if(sizeof(any_key) == (sizeof(char) || sizeof(int)))
+            {
+            system("clear");
+        }
         break;
     }
 }
@@ -65,7 +71,7 @@ void read_cell(char file_name[MAX_STRING_SIZE])
     //Node *head_ref;
     line_counter = 0;
     network_counter = 0;
-    short end_of_data =0;
+    short end_of_data = 0;
 
     char buffer[LINE_SIZE];
 
@@ -121,7 +127,7 @@ void append_Node(){
    first_Node = aux;
 
    return;
-    
+
 }
 
 // The following method inserts a new connection 
