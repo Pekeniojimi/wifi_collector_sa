@@ -7,7 +7,7 @@
 #include "../incl/collect.h"
 
 // The following function prints the information contained by all cells
-void print_all(Node *header_Node)
+void print_all()
 {   
     Node *aux = header_Node;
 
@@ -18,7 +18,7 @@ void print_all(Node *header_Node)
                 aux->channel,aux->en_key,
                 aux->quality,aux->freq,
                 aux->signal_l);
-        aux = (Node*) aux->next;
+        aux = aux->next;
     }
     /*
     for (int i = 0; i < network_counter; i++)

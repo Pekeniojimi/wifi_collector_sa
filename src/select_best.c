@@ -13,13 +13,13 @@ the access point to any network that offers the highest quality
 */ 
 void select_b()
 {
-    Node *aux = header_Node; 
+    //Node *aux = header_Node; 
 
     int z = best();
     aux = header_Node;
     while ( *aux->quality != z)
     {
-        aux = (Node*) aux->next;
+        aux = aux->next;
     }
     printf("The best connection data is: \n");
     printf("\n%s %s %s %s %s %s %s %s %s\n",
@@ -40,8 +40,8 @@ void select_b()
 
 int best()
 {
-    //Node *aux = header_Node;
-    int x=0;
+    aux = header_Node;
+    //int x=0;
     int biggest;
     int smaller;
 
@@ -67,7 +67,7 @@ int best()
             {
                 biggest = smaller;
             }
-        aux = (Node*) aux->next;
+        aux = aux->next;
     }
     while (aux->next != NULL);
     

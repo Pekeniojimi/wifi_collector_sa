@@ -36,20 +36,21 @@ typedef struct Node_t {
     char quality[MAX_STRING_SIZE];
     char freq[MAX_STRING_SIZE];
     char signal_l[MAX_STRING_SIZE];
-    struct Node *next;
+    struct Node_t *next;
 } Node;
 
+int cell_num;
 Node *header_Node;
 
 void create_Node();
 
 /*
 void append(Node **head_ref, Node *new_Node);
-
 void delete_Node(Node **head_ref, char ESSID[]);
-
-void clear_list(Node **head_ref);
 */
+
+void clear_list(Node *head_ref);
+
 
 //this is our struct of connections
 //connection *p_connections;
