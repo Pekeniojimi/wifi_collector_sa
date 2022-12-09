@@ -5,10 +5,11 @@
 #include "../incl/main.h"
 #include "../incl/collect.h"
 
-Node *aux;
+Node *HQ_Node;
 
 void select_b();
 
 int best();
+//int quality2int(char *quality_string);
 
 #endif

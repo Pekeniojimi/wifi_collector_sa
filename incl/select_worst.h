@@ -5,7 +5,7 @@
 #include "../incl/main.h"
 #include "../incl/collect.h"
 
-Node *aux;
+Node *LQ_Node;
 
 void select_w();
 
