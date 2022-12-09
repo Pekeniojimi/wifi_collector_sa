@@ -5,6 +5,6 @@
 
 char any_key;
 
-void print_all();
+void print_all(Node *header_Node);
 
 #endif

@@ -12,14 +12,21 @@ the access point to any network that offers the lowest quality
 */ 
 void select_w()
 {
-    int z = worst(p_connections);
+    Node *aux = header_Node;
+
+    int z = worst();
+    aux = header_Node;
+    while ( *aux->quality != z)
+    {
+        aux = (Node*) aux->next;
+    }
     printf("the worst connection data is: \n");
     printf("\n%s %s %s %s %s %s %s %s %s\n",
-                (p_connections)[z].cell_num, (p_connections)[z].mac,
-                (p_connections)[z].essid, (p_connections)[z].mode,
-                (p_connections)[z].channel, (p_connections)[z].en_key,
-                (p_connections)[z].quality, (p_connections)[z].freq,
-                (p_connections)[z].signal_l);
+                aux->cell_num, aux->mac,
+                aux->essid, aux->mode,
+                aux->channel, aux->en_key,
+                aux->quality, aux->freq,
+                aux->signal_l);
 
     printf("\nPress any key to go to the menu: ");
     scanf("%s", &any_key);
@@ -30,8 +37,9 @@ void select_w()
 }
 
 
-int worst(connection *ptr)
+int worst()
 {
+    Node *aux = header_Node;
     int x=0;
     int smallest;
     int bigger;
@@ -42,24 +50,24 @@ int worst(connection *ptr)
     p_smallest =(char*) calloc(1, 10*sizeof(char));
     p_bigger =(char*) calloc(1, 10*sizeof(char));
 
-    strcat(p_smallest, (ptr)[x].quality + 8);
+    strcat(p_smallest, aux->quality + 8);
     //printf("%s\n",p_smallest);
     smallest = atoi(p_smallest);   
     //printf("%i\n",smallest);
 
-    for(int i=1; i<network_counter; i++)
+    do
     {
-        strcpy(p_bigger, (ptr)[i].quality + 8);
+        strcpy(p_bigger, aux->quality + 8);
         //printf("%i : ", i);
         //printf(" %s bigger - ", p_bigger);
         bigger = atoi(p_bigger);
         //printf("%i \n", bigger);  
             if(smallest > bigger)
             {
-                x=i;
                 smallest = bigger;
             }
     }
+    while (aux->next != NULL);
 
     return x;
 }

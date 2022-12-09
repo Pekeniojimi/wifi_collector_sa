@@ -109,7 +109,7 @@ void append_Node(Node *last_Node){
     */
 
    Node *first_Node = (Node*) calloc(INITIAL_SIZE, sizeof(Node));
-   last_Node->next = first_Node;
+   last_Node->next = (struct Node*) first_Node;
    last_Node = first_Node;
 
    return;

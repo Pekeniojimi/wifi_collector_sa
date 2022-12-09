@@ -7,8 +7,20 @@
 #include "../incl/collect.h"
 
 // The following function prints the information contained by all cells
-void print_all()
-{
+void print_all(Node *header_Node)
+{   
+    Node *aux = header_Node;
+
+    while(aux != NULL) {
+        printf("\n%s %s %s %s %s %s %s %s %s\n",  
+                aux->cell_num,aux->mac,
+                aux->essid,aux->mode,
+                aux->channel,aux->en_key,
+                aux->quality,aux->freq,
+                aux->signal_l);
+        aux = (Node*) aux->next;
+    }
+    /*
     for (int i = 0; i < network_counter; i++)
     {
         if(strlen((p_connections)[i].cell_num) != 0)
@@ -23,6 +35,7 @@ void print_all()
 
         }
     }
+    */
 
     printf("\nPress any key to go to the menu: ");
     scanf("%s", &any_key);

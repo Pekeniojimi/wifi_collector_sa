@@ -3,10 +3,8 @@
 
 #include "../incl/main.h"
 
-// int line_counter;
-//int network_counter;
-int line_counter = 0;
-int network_counter = 0;
+int line_counter;
+int network_counter;
 Node *first_Node;
 // Node *new_Node;
 

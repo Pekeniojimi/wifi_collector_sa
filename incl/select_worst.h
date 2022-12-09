@@ -5,10 +5,10 @@
 #include "../incl/main.h"
 #include "../incl/collect.h"
 
-connection *ptr;
+Node *aux;
 
 void select_w();
 
-int worst(connection *ptr);
+int worst();
 
 #endif

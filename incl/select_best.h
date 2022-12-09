@@ -5,10 +5,10 @@
 #include "../incl/main.h"
 #include "../incl/collect.h"
 
-connection *ptr;
+Node *aux;
 
 void select_b();
 
-int best(connection *ptr);
+int best();
 
 #endif

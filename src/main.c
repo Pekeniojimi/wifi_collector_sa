@@ -45,7 +45,7 @@ int main()
             print_cell();
             break;
         case 11:
-            print_all();
+            print_all(header_Node);
             break;    
         default:
             printf("\nAt this moment this functionality is not available.\n\n");

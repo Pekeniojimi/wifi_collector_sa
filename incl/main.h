@@ -9,7 +9,6 @@
 
 
 int menu_int;
-Node *header_Node;
 
 /*
 typedef struct connection_S
@@ -39,6 +38,8 @@ typedef struct Node_t {
     char signal_l[MAX_STRING_SIZE];
     struct Node *next;
 } Node;
+
+Node *header_Node;
 
 void create_Node();
 

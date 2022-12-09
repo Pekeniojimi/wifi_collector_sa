@@ -13,15 +13,21 @@ the access point to any network that offers the highest quality
 */ 
 void select_b()
 {
-    
+    Node *aux = header_Node; 
+
     int z = best();
+    aux = header_Node;
+    while ( *aux->quality != z)
+    {
+        aux = (Node*) aux->next;
+    }
     printf("The best connection data is: \n");
     printf("\n%s %s %s %s %s %s %s %s %s\n",
-                (p_connections)[z].cell_num, (p_connections)[z].mac,
-                (p_connections)[z].essid, (p_connections)[z].mode,
-                (p_connections)[z].channel, (p_connections)[z].en_key,
-                (p_connections)[z].quality, (p_connections)[z].freq,
-                (p_connections)[z].signal_l);
+               aux->cell_num,aux->mac,
+               aux->essid,aux->mode,
+               aux->channel,aux->en_key,
+               aux->quality,aux->freq,
+               aux->signal_l);
     
     printf("\nPress any key to go to the menu: ");
     scanf("%s", &any_key);
@@ -34,7 +40,7 @@ void select_b()
 
 int best()
 {
-    Node *aux = header_Node;
+    //Node *aux = header_Node;
     int x=0;
     int biggest;
     int smaller;
@@ -59,12 +65,11 @@ int best()
         //printf("%i \n", smaller);   
             if(biggest < smaller)
             {
-                x=i;
                 biggest = smaller;
             }
-        aux = aux->next;
+        aux = (Node*) aux->next;
     }
-    while (aux->next != NULL)
+    while (aux->next != NULL);
     
-    return x;
+    return biggest;
 }
