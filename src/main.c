@@ -17,7 +17,7 @@ int main()
 {
     system("clear");
 
-    char response;
+    //char response;
 
     Node *header_Node = (Node*) calloc(INITIAL_SIZE, sizeof(Node));
 
@@ -25,12 +25,14 @@ int main()
     {
         print_menu();
         scanf("%d", &menu_int);
+        while(getchar() != '\n'); //Clear input buffer.
 
         switch (menu_int)
         {
         case 1:
-            response = getchar();
-            quit(response);
+            //response = getchar();
+            //quit(response);
+            quit();
             break;
         case 2: 
             cell_collect(header_Node);
@@ -92,6 +94,7 @@ int choose_cell()
         while(cell_num <= 0 || cell_num >= 22)
         {
             printf("Please enter a valid number for the cell. (1-21)");
+            
             scanf("%d", &cell_num);
         }
         return cell_num;

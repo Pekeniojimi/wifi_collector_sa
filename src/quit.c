@@ -5,12 +5,14 @@
 #include "../incl/quit.h"
 
 // this function offers you to quit the program or continue
-
-void quit(char response)
+char  response = 0;
+//void quit(char response)
+void quit()
 {
+
     printf("Are you sure you want to exit? [y/N]:");
     scanf("%c",&response);
-
+    while(getchar() != '\n'); //Clear input buffer.
     switch (response)
     {
         case 'y':
