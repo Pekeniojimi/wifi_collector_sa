@@ -25,8 +25,8 @@ int main()
     {
         print_menu();
         scanf("%d", &menu_int);
-        while(getchar() != '\n'); //Clear input buffer.
-
+        while(getchar() != '\n') menu_int = 0;; //Clear input buffer.
+        
         switch (menu_int)
         {
         case 1:
@@ -87,6 +87,7 @@ int choose_cell()
 
     printf("\nWhat cell do you want to focus? (1 - 21):");
     scanf("%d", &cell_num);
+    while(getchar() != '\n') cell_num = 0;
     if(cell_num >= 1 && cell_num <= 21)
     {
         return cell_num;
@@ -98,6 +99,7 @@ int choose_cell()
             printf("Please enter a valid number for the cell. (1-21)");
             
             scanf("%d", &cell_num);
+            while(getchar() != '\n') cell_num = 0;
         }
         return cell_num;
     }

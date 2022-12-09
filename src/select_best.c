@@ -31,6 +31,7 @@ void select_b()
     
     printf("\nPress any key to go to the menu: ");
     scanf("%s", &any_key);
+    while(getchar() != '\n'); //Clear input buffer.
     if(sizeof(any_key) == (sizeof(char) || sizeof(int)))
     {
         system("clear");

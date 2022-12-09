@@ -16,7 +16,8 @@
 
     printf("Do you want to print the information of another cell? [y/N]:");
         scanf("%s", &y_n);
-        
+        while(getchar() != '\n') y_n = 'a'; //Clear input buffer.
+
         switch (y_n)
         {
             case 'y':
