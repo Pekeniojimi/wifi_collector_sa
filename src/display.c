@@ -44,19 +44,20 @@
         aux_first = header_Node;
         int counter;
 
-        char input_of_String[MAX_STRING_SIZE];
+        //char input_of_String[MAX_STRING_SIZE];
         //int count_v = 0;
         
-        char cell_name[20] = {"Cell "};
+        char cell_name[MAX_STRING_SIZE] = {"Cell "};
         //int value;
 
         int picker = choose_cell();
    
-       //int to string
-        sprintf(input_of_String, "%i", picker); 
-        strcat(cell_name, input_of_String);
+        //int to string
+        //sprintf(input_of_String, "%i", picker); 
+        //strcat(cell_name, input_of_String);
+        sprintf(cell_name, "Cell %i\n", picker); 
         
-        while(aux_first->cell_num != cell_name ) 
+        while(strcmp(aux_first->cell_num, cell_name) != 0)
         {
             aux_first = aux_first->next;
             if (aux_first == NULL)
@@ -70,12 +71,19 @@
         }
 
         counter = 1;
-        aux_last = aux_first;
+        aux_last = aux_first->next;
 
-        while(aux_last->next->cell_num == cell_name) 
+        while (aux_last != NULL)
         {
-            aux_last = aux_last->next;
-            counter++;
+            if (strcmp(aux_last->cell_num, cell_name) == 0)
+            {
+                aux_last = aux_last->next;
+                counter++;
+            }
+            else
+            {
+                break;
+            }
         }
 
         aux_last = aux_first;
